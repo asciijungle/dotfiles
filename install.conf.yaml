@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.Xdefaults: Xdefaults
     ~/.Xmodmap: Xmodmap
     ~/.xmonad/xmonad.hs: xmonad.hs
 
