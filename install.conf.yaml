@@ -6,6 +6,7 @@
 
 - link:
     ~/.Xmodmap: Xmodmap
+    ~/.xmonad/xmonad.hs: xmonad.hs
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
