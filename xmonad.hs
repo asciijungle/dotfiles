@@ -11,6 +11,8 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Accordion
+import XMonad.Prompt
+import XMonad.Prompt.Shell
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import Graphics.X11.ExtraTypes.XF86
@@ -37,8 +39,13 @@ myScreenshot = "screenshot"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
-myLauncher = "$(yeganesh -x -- -fn '-*-terminus-*-r-normal-*-*-120-*-*-*-*-iso8859-*' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC')"
-
+myXPConfig = def
+  { position          = Top
+  , alwaysHighlight   = True
+  , promptBorderWidth = 0
+  , fgColor           = "#CEFFAC"
+  , font              = "-*-terminus-*-r-normal-*-*-160-*-*-*-*-iso8859-*"
+  }
 
 ------------------------------------------------------------------------
 -- Workspaces
@@ -121,7 +128,6 @@ xmobarCurrentWorkspaceColor = "#CEFFAC"
 -- Width of the window border in pixels.
 myBorderWidth = 2
 
-
 ------------------------------------------------------------------------
 -- Key bindings
 --
@@ -148,7 +154,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Spawn the launcher using command specified by myLauncher.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn myLauncher)
+     shellPrompt myXPConfig)
 
   -- Take a selective screenshot using the command specified by mySelectScreenshot.
   , ((modMask .|. shiftMask, xK_p),
@@ -347,7 +353,8 @@ myStartupHook = docksStartupHook >> setWMName "LG3D"
 --
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ defaults {
+  xmonad $ docks defaults {
+      --logHook = dynamicLogWithPP $ sjanssenPP { ppOrder = reverse }
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
@@ -364,8 +371,6 @@ main = do
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
 --
--- No need to modify this.
---
 defaults = defaultConfig {
     -- simple stuff
     terminal           = myTerminal,
@@ -381,7 +386,7 @@ defaults = defaultConfig {
     mouseBindings      = myMouseBindings,
 
     -- hooks, layouts
-    layoutHook         = avoidStruts $ smartBorders $ myLayout,
+    layoutHook         = avoidStruts $ myLayout,
     manageHook         = myManageHook,
     startupHook        = myStartupHook
 }

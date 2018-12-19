@@ -8,6 +8,7 @@
     ~/.Xdefaults: Xdefaults
     ~/.Xmodmap: Xmodmap
     ~/.xmonad/xmonad.hs: xmonad.hs
+    ~/.xmonad/xmobar.hs: xmobar.hs
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
