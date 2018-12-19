@@ -10,6 +10,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.Accordion
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import Graphics.X11.ExtraTypes.XF86
@@ -80,7 +81,7 @@ myManageHook = composeAll
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| full
+myLayout = tiled ||| Mirror tiled ||| noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -93,8 +94,6 @@ myLayout = tiled ||| Mirror tiled ||| full
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
-
-     full    = noBorders( fullscreenFull Full )
 
 ------------------------------------------------------------------------
 -- Colors and borders
@@ -341,8 +340,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
-
+myStartupHook = docksStartupHook >> setWMName "LG3D"
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
@@ -357,8 +355,6 @@ main = do
           , ppSep = "   "
       }
       , manageHook = manageDocks <+> myManageHook
-      , layoutHook = avoidStruts  $  layoutHook defaultConfig
-      , startupHook = setWMName "LG3D"
   }
 
 
@@ -385,7 +381,7 @@ defaults = defaultConfig {
     mouseBindings      = myMouseBindings,
 
     -- hooks, layouts
-    layoutHook         = smartBorders $ myLayout,
+    layoutHook         = avoidStruts $ smartBorders $ myLayout,
     manageHook         = myManageHook,
     startupHook        = myStartupHook
 }

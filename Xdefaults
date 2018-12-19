@@ -1,10 +1,10 @@
 urxvt*termName: rxvt-256color
 urxvt*xftAntialias: true
-urxvt*colorUL: #366060
+urxvt*cursorColor: #fe8019
 urxvt.cursorBlink: 1
-urxvt.foreground: 	#E8DFD6
-urxvt.background: 	#021B21
-urxvt.cursorColor:  #32fc00
+!urxvt.foreground: 	#E8DFD6
+!urxvt.background: 	#021B21
+!urxvt.cursorColor:  #32fc00
 urxvt.color0:       #032C36
 urxvt.color8:       #065F73
 urxvt.color1:       #C2454E
@@ -22,11 +22,48 @@ urxvt.color14:      #9ED9D8
 urxvt.color7:       #F2F1B9
 urxvt.color15:      #F6F6C9
 
+
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
+
 urxvt.saveLines: 20000
 urxvt.scrollBar: false
 urxvt.secondaryScroll: true
 urxvt.font: -xos4-terminus-medium-*-*-*-14-*-*-*-*-*-iso8859-15,xft:terminus:pixelsize:12
-urxvt.perl-ext-common: default,matcher
+urxvt.perl-ext-common: default,matcher,font-size
 urxvt.urlLauncher: firefox
 urxvt.matcher.button: 1
 urxvt.tabbed.saveLines: 1000
