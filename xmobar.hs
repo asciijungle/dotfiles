@@ -26,19 +26,19 @@ Config {
 
     -- battery monitor
     , Run Battery    [ "--template" , "Batt: <acstatus>"
-                     , "--Low"      , "10"        -- units: %
+                     , "--Low"      , "20"        -- units: %
                      , "--High"     , "80"        -- units: %
-                     , "--low"      , "#EF5847"
-                     , "--normal"   , "#ebdbb2"
-                     , "--high"     , "#fe8019"
+                     , "--low"      , "#dc5454"
+                     , "--normal"   , "#f0bc72"
+                     , "--high"     , "#7ea84d"
 
                      , "--" -- battery specific options
                             -- discharging status
                      , "-o"	, "<left>% (<timeleft>)"
                             -- AC "on" status
-                     , "-O" , "<fc=#dAA520>Charging</fc>"
+                     , "-O" , "<fc=#b5bd68>Charging</fc>"
                             -- charged status
-                     , "-i" , "<fc=#EF5847>Charged</fc>"
+                     , "-i" , "<fc=#7ea84d>Charged</fc>"
                      ] 50
 
     , Run DynNetwork [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
