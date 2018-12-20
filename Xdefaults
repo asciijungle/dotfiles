@@ -2,62 +2,44 @@ urxvt*termName: rxvt-256color
 urxvt*xftAntialias: true
 urxvt*cursorColor: #fe8019
 urxvt.cursorBlink: 1
-!urxvt.foreground: 	#E8DFD6
-!urxvt.background: 	#021B21
-!urxvt.cursorColor:  #32fc00
-urxvt.color0:       #032C36
-urxvt.color8:       #065F73
-urxvt.color1:       #C2454E
-urxvt.color9:       #EF5847
-urxvt.color2:       #7CBF9E
-urxvt.color10:      #A2D9B1
-urxvt.color3:       #8A7A63
-urxvt.color11:      #BEB090
-urxvt.color4:       #2E3340
-urxvt.color12:      #61778D
-urxvt.color5:       #FF5879
-urxvt.color13:      #FF99A1
-urxvt.color6:       #44B5B1
-urxvt.color14:      #9ED9D8
-urxvt.color7:       #F2F1B9
-urxvt.color15:      #F6F6C9
+
+! special
+*.foreground:   #ebdbb2
+*.background:   #282828
+*.cursorColor:  #fe8019
 
 
-! hard contrast: *background: #1d2021
-*background: #282828
-! soft contrast: *background: #32302f
-*foreground: #ebdbb2
+! black
+*.color0:       #3e4147
+*.color8:       #54585e
 
-URxvt.color24:  #076678
-URxvt.color66:  #427b58
-URxvt.color88:  #9d0006
-URxvt.color96:  #8f3f71
-URxvt.color100: #79740e
-URxvt.color108: #8ec07c
-URxvt.color109: #83a598
-URxvt.color130: #af3a03
-URxvt.color136: #b57614
-URxvt.color142: #b8bb26
-URxvt.color167: #fb4934
-URxvt.color175: #d3869b
-URxvt.color208: #fe8019
-URxvt.color214: #fabd2f
-URxvt.color223: #ebdbb2
-URxvt.color228: #f2e5bc
-URxvt.color229: #fbf1c7
-URxvt.color230: #f9f5d7
-URxvt.color234: #1d2021
-URxvt.color235: #282828
-URxvt.color236: #32302f
-URxvt.color237: #3c3836
-URxvt.color239: #504945
-URxvt.color241: #665c54
-URxvt.color243: #7c6f64
-URxvt.color244: #928374
-URxvt.color245: #928374
-URxvt.color246: #a89984
-URxvt.color248: #bdae93
-URxvt.color250: #d5c4a1
+! red
+*.color1:       #dc5454
+*.color9:       #c26868
+
+! green
+*.color2:       #7ea84d
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #df9030
+*.color11:      #f0bc72
+
+! blue
+*.color4:       #4e85b2
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #a156a1
+*.color13:      #bb94bb
+
+! cyan
+*.color6:       #4da499
+*.color14:      #8abeb7
+
+! white
+*.color7:       #c2bbaf
+*.color15:      #c5c8c6
 
 urxvt.saveLines: 20000
 urxvt.scrollBar: false
