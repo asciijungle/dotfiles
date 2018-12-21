@@ -45,7 +45,7 @@ myXPConfig = def
   { position          = Top
   , alwaysHighlight   = True
   , promptBorderWidth = 0
-  , fgColor           = "#CEFFAC"
+  , fgColor           = "#df9030"
   , font              = "-*-terminus-*-r-normal-*-*-160-*-*-*-*-iso8859-*"
   }
 
