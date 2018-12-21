@@ -1,6 +1,7 @@
 import System.IO
 import System.Exit
 import XMonad
+import XMonad.Actions.PhysicalScreens
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -15,6 +16,7 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.WorkspaceCompare(getXineramaPhysicalWsCompare, mkWsSort, WorkspaceSort)
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -51,7 +53,7 @@ myXPConfig = def
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["~:web","1:urxvt","2:code","3:mail"] ++ map show [5..9]
+myWorkspaces = ["1:web","2:urxvt","3:code","4:mail"] ++ map show [5..9]
 
 
 ------------------------------------------------------------------------
@@ -120,10 +122,13 @@ tabConfig = defaultTheme {
 }
 
 -- Color of current window title in xmobar.
-xmobarTitleColor = "#FFB6B0"
+xmobarTitleColor = "#df9030"
 
 -- Color of current workspace in xmobar.
-xmobarCurrentWorkspaceColor = "#CEFFAC"
+xmobarCurrentWorkspaceColor = "#dc5454"
+
+xmobarVisibleColor = "#c2bbaf"
+xmobarHiddenColor  = "#54585e"
 
 -- Width of the window border in pixels.
 myBorderWidth = 2
@@ -297,10 +302,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
   -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-  [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+  [((modMask .|. mask, key), f sc)
       | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+      , (f, mask) <- 
+        [ (viewScreen screenComperator, 0)
+        , (sendToScreen screenComperator, shiftMask)]
+        ]
 
+
+screenComperator = horizontalScreenOrderer
 
 ------------------------------------------------------------------------
 -- Mouse bindings
@@ -357,9 +367,14 @@ main = do
       --logHook = dynamicLogWithPP $ sjanssenPP { ppOrder = reverse }
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
-          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 140
+          , ppOrder = \(ws:_:t:_) -> [ws,t]
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "   "
+          , ppVisible = xmobarColor xmobarVisibleColor ""
+          , ppHidden = xmobarColor xmobarHiddenColor ""
+          , ppUrgent = ((:) '*') . (xmobarColor xmobarCurrentWorkspaceColor "")
+          , ppSep = " | "
+          , ppSort = mkWsSort $ getXineramaPhysicalWsCompare screenComperator
       }
       , manageHook = manageDocks <+> myManageHook
   }

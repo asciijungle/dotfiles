@@ -58,3 +58,4 @@ urxvt.tabbed.secondaryScroll: true
 urxvt.tabbed.font: xft:terminus:pixelsize=20
 urxvt*inheritPixmap: true
 urxvt*shading: 70
+urxvt.urgentOnBell: true
