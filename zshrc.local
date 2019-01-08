@@ -1,0 +1,18 @@
+# I use the zsh configuration maintained by the grml linux project.
+# it is possible to install the grml zsh configuration like this:
+#
+# wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+#
+# This file contains my additions and modifications to that configuration.
+
+# ALIASES
+alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\ full|percentage"'
+
+# ENVIRONMENT
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+
+zstyle ':prompt:grml:*:items:rc' pre '%F{240}'
+zstyle ':prompt:grml:*:items:user' pre '%B%F{red}'
+zstyle ':prompt:grml:*:items:host' pre '%F{yellow}'
+zstyle ':prompt:grml:*:items:host' post '%f'
+
