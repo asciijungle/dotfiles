@@ -16,6 +16,9 @@ urxvtd --quiet --opendisplay --fork
 # Start redshift
 redshift -l 53.5:9.9 -t 4500:3800 &
 
+# hide mouse cursor
+unclutter &
+
 # Start screensaver
 xscreensaver &
 exec $HOME/.cabal/bin/xmonad
