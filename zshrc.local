@@ -8,11 +8,42 @@
 # ALIASES
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\ full|percentage"'
 
+# Remove all docker containers running and exited
+alias docker-rma='__drma() { sudo docker ps -aq "$@" | xargs -r sudo docker rm -f; }; __drma'
+# Remove all docker images
+alias docker-rmia='__drmia() { sudo docker images -q "$@" | xargs -r sudo docker rmi -f; }; __drmia'
+# Remove all custom docker networks
+alias docker-rmnet='__drmnet() { sudo docker network ls -q -f type=custom "$@" | xargs -r sudo docker network rm; }; __drmnet'
+# Remove all unused volumes
+alias docker-rmvol='__drmvol() { sudo docker volume ls -q "$@" | xargs -r sudo docker volume rm; }; __drmvol'
+# Remove all docker containers and all docker images
+alias docker-rmall='docker-rma && docker-rmia'
+# Remove all docker containers, images, custom networks, and volumes
+alias docker-nuke='docker-rmall; docker-rmnet; docker-rmvol'
+# Remove only exited containers, unused images, unused networks, and unused volumes
+alias docker-clean='docker-rma -f status=exited; docker-rmia -f dangling=true; docker-rmnet; docker-rmvol -f dangling=true'
+
+alias ho='~/.screenlayout/homeoffice.sh'
+
 # ENVIRONMENT
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+
+# fix java on wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export PATH="$PATH:/home/bbr/.npm-global/bin:/home/bbr/opt/go/bin/:/home/bbr/.cabal/bin:/home/bbr/bin/"
+
+eval "$(direnv hook zsh)"
+
+# directory hashes
+hash -d vpn=~/.config/openvpn
 
 zstyle ':prompt:grml:*:items:rc' pre '%F{240}'
 zstyle ':prompt:grml:*:items:user' pre '%B%F{red}'
 zstyle ':prompt:grml:*:items:host' pre '%F{yellow}'
 zstyle ':prompt:grml:*:items:host' post '%f'
 
+# kubectl completion
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi

@@ -10,6 +10,9 @@ xrdb -merge ~/.Xdefaults &
 setxkbmap -layout us -variant altgr-intl
 xmodmap ~/.Xmodmap
 
+# mousewheel control
+imwheel --kill --buttons "4 5" &
+
 # start urxvt daemon
 urxvtd --quiet --opendisplay --fork
 
