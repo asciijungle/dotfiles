@@ -11,11 +11,14 @@
     - ~/.config/foot
     - ~/.config/mako
     - ~/.config/sway
+    - ~/.config/waybar
 
 - link:
     ~/.config/foot/foot.ini: foot.ini
     ~/.config/mako/config: mako.config
     ~/.config/sway/config: sway.config
+    ~/.config/waybar/config: waybar.config
+    ~/.config/waybar/style.css: waybar.style.css
     ~/.xinitrc: xinitrc
     ~/.Xdefaults: Xdefaults
     ~/.Xmodmap: Xmodmap
