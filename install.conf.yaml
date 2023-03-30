@@ -2,9 +2,20 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean:
+    - ~
+    - ~/.config: 
+      recursive: true
+
+- create:
+    - ~/.config/foot
+    - ~/.config/mako
+    - ~/.config/sway
 
 - link:
+    ~/.config/foot/foot.ini: foot.ini
+    ~/.config/mako/config: mako.config
+    ~/.config/sway/config: sway.config
     ~/.xinitrc: xinitrc
     ~/.Xdefaults: Xdefaults
     ~/.Xmodmap: Xmodmap
