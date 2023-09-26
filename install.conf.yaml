@@ -24,8 +24,6 @@
     ~/.xinitrc: xinitrc
     ~/.Xdefaults: Xdefaults
     ~/.Xmodmap: Xmodmap
-    ~/.xmonad/xmonad.hs: xmonad.hs
-    ~/.xmonad/xmobar.hs: xmobar.hs
     ~/.zshrc.local: zshrc.local
 
 - shell:

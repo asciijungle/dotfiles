@@ -35,6 +35,12 @@ export PATH="$PATH:/home/bbr/.npm-global/bin:/home/bbr/opt/go/bin/:/home/bbr/.ca
 
 eval "$(direnv hook zsh)"
 
+#pyenv
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # directory hashes
 hash -d vpn=~/.config/openvpn
 

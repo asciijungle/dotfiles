@@ -38,7 +38,7 @@ window#waybar {
 }
 
 #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
-    padding: 0 5px;
+    padding: 0 8px;
     margin: 0 5px;
 }
 
@@ -125,6 +125,6 @@ window#waybar {
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #DFAF8F;
+    /*background-color: #ecf0f1;*/
+    /*color: #DFAF8F;*/
 }
