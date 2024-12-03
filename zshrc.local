@@ -31,7 +31,7 @@ export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 # fix java on wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-export PATH="$PATH:/home/bbr/.npm-global/bin:/home/bbr/opt/go/bin/:/home/bbr/.cabal/bin:/home/bbr/bin/"
+export PATH="$PATH:/home/bbr/.npm-global/bin:/home/bbr/opt/go/bin/:/home/bbr/.cabal/bin:/home/bbr/bin/:/home/bbr/.local/bin"
 
 eval "$(direnv hook zsh)"
 
